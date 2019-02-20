@@ -47,15 +47,15 @@ for i in range(len(fuzzyArray)):
         if (not fuzzyArray[i][j].isNull()):
             if firstEntry:
                 minA = fuzzyArray[i][j].a
-                minD = fuzzyArray[i][j].d
+                maxD = fuzzyArray[i][j].d
             else:
                 if fuzzyArray[i][j].a < minA:
                     minA = fuzzyArray[i][j].a
-                if fuzzyArray[i][j].d < minD:
-                    minD = fuzzyArray[i][j].d
+                if fuzzyArray[i][j].d > maxD:
+                    maxD = fuzzyArray[i][j].d
             sumB += fuzzyArray[i][j].b
             sumC += fuzzyArray[i][j].c
-    fuzzyList.append(Fuzzy(minA,1/4*sumB,1/4*sumC,minD))
+    fuzzyList.append(Fuzzy(minA,1/4*sumB,1/4*sumC,maxD))
 
 for fuz in fuzzyList:
     fuz.print()
